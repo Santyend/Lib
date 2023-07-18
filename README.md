@@ -12,6 +12,10 @@
    - JavaScript: Implements interactivity and functionality for form submissions, authentication, and data manipulation.
 
      The code includes Bootstrap CSS framework for styling and responsiveness. Each page has its own custom CSS rules to define the layout, colors, and other visual aspects. JavaScript code is used for handling form submissions, performing authentication, adding and deleting books/members, issuing books to members, and displaying transaction data.
+     
+
+>>username:admin
+>>password:password
 
 
 Login Page:
