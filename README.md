@@ -6,5 +6,5 @@ Books:
 ![Screenshot (65)](https://github.com/Santyend/LIB/assets/127419563/217a245c-f09f-40ba-be84-ec53018b975e)
 Members:
 ![Screenshot (66)](https://github.com/Santyend/LIB/assets/127419563/5521ce97-ae4d-419d-a381-ee66e7f9868a)
-Transaction:
+Transactions:
 ![Screenshot (67)](https://github.com/Santyend/LIB/assets/127419563/cbf20d29-1e32-4d31-a52c-5ed8fbba137f)
