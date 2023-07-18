@@ -1,3 +1,19 @@
+1. Title: Library Management System
+2. Overview: This project is a web-based library management system that allows users to manage books, members, and transactions efficiently.
+3. Features:
+   - User authentication: Users can log in using a predefined username and password.
+   - Dashboard: Provides an overview of library details and statistics.
+   - Books: Allows users to add and delete books, displaying information such as title, author, and ISBN.
+   - Members: Enables the addition and deletion of library members, including their name, email, and issued books.
+   - Transactions: Displays a list of transactions, including the book title, member name, date, and amount.
+4. Technologies:
+   - HTML: Used for structuring the web pages.
+   - CSS: Provides styling and visual enhancements using Bootstrap framework.
+   - JavaScript: Implements interactivity and functionality for form submissions, authentication, and data manipulation.
+
+     The code includes Bootstrap CSS framework for styling and responsiveness. Each page has its own custom CSS rules to define the layout, colors, and other visual aspects. JavaScript code is used for handling form submissions, performing authentication, adding and deleting books/members, issuing books to members, and displaying transaction data.
+
+
 Login Page:
 ![Screenshot (63)](https://github.com/Santyend/LIB/assets/127419563/08ae4115-5cc0-4745-b376-d4fba5d8de01)
 
