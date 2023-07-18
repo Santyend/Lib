@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Library Management - Transactions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS for the transactions page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa00;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: #007bff;
+            text-align: center;
+        }
+
+        .transaction-list {
+            margin-top: 30px;
+        }
+
+        .transaction-list th {
+            font-weight: 600;
+            color: #007bff;
+        }
+
+        .transaction-list td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Transactions</h1>
+        <div class="table-responsive">
+            <table class="table transaction-list">
+                <thead>
+                    <tr>
+                        <th>Transaction ID</th>
+                        <th>Book Title</th>
+                        <th>Member</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionTable">
+                    <!-- Transaction data will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        var transactions = [
+            { id: 1, bookTitle: 'Book Title 1', member: 'John Doe', date: '2022-05-15', amount: 10 },
+            { id: 2, bookTitle: 'Book Title 2', member: 'Jane Smith', date: '2022-07-01', amount: 15 }
+        ];
+
+        function generateTransactionRows() {
+            var transactionRows = '';
+            transactions.forEach(function (transaction) {
+                transactionRows += `
+                    <tr>
+                        <td>${transaction.id}</td>
+                        <td>${transaction.bookTitle}</td>
+                        <td>${transaction.member}</td>
+                        <td>${transaction.date}</td>
+                        <td>${transaction.amount}</td>
+                    </tr>
+                `;
+            });
+            return transactionRows;
+        }
+
+        // Call the function to generate transaction rows and insert them into the table
+        document.getElementById('transactionTable').innerHTML = generateTransactionRows();
+    </script>
+</body>
+</html>

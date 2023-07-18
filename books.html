@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Library Management - Books</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS for the books page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa00;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: #007bff;
+            text-align: center;
+        }
+
+        .book-form input[type="text"],
+        .book-form select {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 3px;
+            border: 1px solid #ced4da;
+        }
+
+        .book-form button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 3px;
+            border: none;
+        }
+
+        .book-list {
+            margin-top: 30px;
+        }
+
+        .book-list th {
+            font-weight: 600;
+            color: #007bff;
+        }
+
+        .book-list td {
+            vertical-align: middle;
+        }
+
+        .book-list .delete-btn {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Books</h1>
+    <div class="book-form">
+        <h3>Add a Book</h3>
+        <form id="bookForm">
+            <div class="form-group">
+                <input type="text" class="form-control" id="title" placeholder="Title" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="author" placeholder="Author" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="isbn" placeholder="ISBN" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Book</button>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table book-list">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Book data will be dynamically added here -->
+            <tr>
+                <td>Book Title</td>
+                <td>Book Author</td>
+                <td>1234567890</td>
+                <td>
+                    <button class="btn btn-danger delete-btn">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+    // Book form submit event
+    document.getElementById("bookForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Fetch form input values
+        const title = document.getElementById("title").value;
+        const author = document.getElementById("author").value;
+        const isbn = document.getElementById("isbn").value;
+
+        // Create new book row
+        const table = document.querySelector(".book-list tbody");
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+            <td>${title}</td>
+            <td>${author}</td>
+            <td>${isbn}</td>
+            <td>
+                <button class="btn btn-danger delete-btn">Delete</button>
+            </td>
+        `;
+        table.appendChild(newRow);
+
+        // Clear form fields
+        document.getElementById("title").value = "";
+        document.getElementById("author").value = "";
+        document.getElementById("isbn").value = "";
+    });
+
+    // Delete book event
+    document.addEventListener("click", function(event) {
+        if (event.target.classList.contains("delete-btn")) {
+            const row = event.target.closest("tr");
+            row.remove();
+        }
+    });
+</script>
+</body>
+</html>

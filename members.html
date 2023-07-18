@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Library Management - Members</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    /* Custom CSS for the members page */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa00;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 30px;
+      color: #007bff;
+      text-align: center;
+    }
+
+    .member-form input[type="text"] {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 3px;
+      border: 1px solid #ced4da;
+    }
+
+    .member-form button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 3px;
+      border: none;
+    }
+
+    .member-list {
+      margin-top: 30px;
+    }
+
+    .member-list th {
+      font-weight: 600;
+      color: #007bff;
+    }
+
+    .member-list td {
+      vertical-align: middle;
+    }
+
+    .member-list .delete-btn {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+
+    .member-list .issue-btn {
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+
+    .member-list .book-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .member-list .book-item .delete-book-btn {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 2px 5px;
+      font-size: 12px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 576px) {
+      .container {
+        margin: 20px auto;
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .member-form button {
+        font-size: 14px;
+      }
+
+      .member-list th {
+        font-size: 14px;
+      }
+
+      .member-list td {
+        font-size: 14px;
+      }
+
+      .member-list .delete-btn,
+      .member-list .issue-btn,
+      .member-list .delete-book-btn {
+        font-size: 10px;
+        padding: 2px 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Members</h1>
+  <div class="member-form">
+    <h3>Add a Member</h3>
+    <form id="memberForm">
+      <div class="form-group">
+        <input type="text" class="form-control" id="name" placeholder="Name" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="email" placeholder="Email" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Member</button>
+    </form>
+  </div>
+  <div class="table-responsive">
+    <table class="table member-list">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Books Issued</th>
+        <th>Fees</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody id="memberTable">
+      <!-- Member data will be dynamically added here -->
+      <tr>
+        <td>John Doe</td>
+        <td>johndoe@example.com</td>
+        <td>
+          <ul class="book-list"></ul>
+        </td>
+        <td>
+          <input type="text" class="form-control fees-input" placeholder="Fees" oninput="displayFees(this.value)">
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control book-input" placeholder="Book Title">
+            <div class="input-group-append">
+              <button class="btn btn-success issue-btn">Issue</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+  // Member form submit event
+  document.getElementById("memberForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Fetch form input values
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+
+    // Create new member row
+    const table = document.querySelector("#memberTable");
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+      <td>${name}</td>
+      <td>${email}</td>
+      <td>
+        <ul class="book-list"></ul>
+      </td>
+      <td>
+        <input type="text" class="form-control fees-input" placeholder="Fees" oninput="displayFees(this.value)">
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control book-input" placeholder="Book Title">
+          <div class="input-group-append">
+            <button class="btn btn-success issue-btn">Issue</button>
+          </div>
+        </div>
+      </td>
+    `;
+    table.appendChild(newRow);
+
+    // Add an update button to the new member row
+    addUpdateButton(newRow);
+
+    // Clear form fields
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+  });
+
+  // Delete member event
+  document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("delete-btn")) {
+      const row = event.target.closest("tr");
+      row.remove();
+    }
+  });
+
+  // Issue book event
+  document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("issue-btn")) {
+      const memberRow = event.target.closest("tr");
+      const name = memberRow.querySelector("td:first-child").textContent;
+      const bookInput = memberRow.querySelector(".book-input");
+      const bookTitle = bookInput.value.trim();
+      const feesInput = memberRow.querySelector(".fees-input");
+      const fees = parseInt(feesInput.value.trim());
+
+      if (bookTitle && fees >= 500) {
+        const bookList = memberRow.querySelector(".book-list");
+        const newBookItem = document.createElement("li");
+        newBookItem.className = "book-item";
+        newBookItem.innerHTML = `
+          <span>${bookTitle}</span>
+          <button class="delete-book-btn btn btn-danger btn-sm">Delete</button>
+        `;
+        bookList.appendChild(newBookItem);
+
+        bookInput.value = "";
+        feesInput.value = ""; // Clear the fees input field
+      } else {
+        alert("Fees must be greater than or equal to 500.");
+      }
+    }
+  });
+
+  // Delete book event
+  document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("delete-book-btn")) {
+      const bookItem = event.target.closest(".book-item");
+      bookItem.remove();
+    }
+  });
+
+  // Function to add an update button to each member row
+  function addUpdateButton(row) {
+    const updateButton = document.createElement("button");
+    updateButton.className = "btn btn-primary update-btn";
+    updateButton.innerText = "Update";
+    row.appendChild(updateButton);
+  }
+
+  // Attach an event listener to the update button
+  document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("update-btn")) {
+      const row = event.target.closest("tr");
+      const name = row.querySelector("td:first-child").textContent;
+      const email = row.querySelector("td:nth-child(2)").textContent;
+
+      const newName = prompt("Enter new name:", name);
+      const newEmail = prompt("Enter new email:", email);
+
+      if (newName && newEmail) {
+        row.querySelector("td:first-child").textContent = newName;
+        row.querySelector("td:nth-child(2)").textContent = newEmail;
+      }
+    }
+  });
+
+  // Function to display the entered fees
+  function displayFees(value) {
+    const feesDisplay = document.getElementById("feesDisplay");
+    feesDisplay.textContent = value;
+  }
+</script>
+</body>
+</html>

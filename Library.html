@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Library Management</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    /* Custom CSS for the library management page */
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('lib.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .sidebar {
+      height: 100vh;
+      background-color: #007bff;
+      color: #fff;
+      padding-bottom: 40px;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    .sidebar .nav-link {
+      color: #fff;
+      transition: all 0.3s;
+      font-size: 16px;
+      padding: 10px 20px;
+    }
+
+    .sidebar .nav-link:hover {
+      background-color: #0056b3;
+      color: #fff;
+    }
+
+    .content {
+      padding: 20px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 30px;
+      text-align: center;
+      font-size: 36px;
+      border: 2px solid transparent;
+      transition: border-color 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+
+    h2:hover {
+      border-color: #fff;
+      transform: scale(1.05);
+    }
+
+    p {
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .copy-right {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-size: 12px;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 767px) {
+      .row {
+        flex-direction: column-reverse;
+      }
+
+      .sidebar {
+        height: auto;
+        border-radius: 0;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+      }
+
+      .content {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="overlay"></div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 sidebar">
+      <h1 class="text-center mt-4">Library</h1>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="dashboard.html" target="dashboardFrame">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="books.html" target="dashboardFrame">Books</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="members.html" target="dashboardFrame">Members</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Transaction.html" target="dashboardFrame">Transaction</a>
+        </li>
+      </ul>
+      <div class="copy-right">&copy; 2023 <i>Kings</i></div>
+    </div>
+    <div class="col-sm-9 content">
+      <iframe src="dashboard.html" name="dashboardFrame" frameborder="0" width="100%" height="100%"></iframe>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
