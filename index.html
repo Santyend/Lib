@@ -1,81 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Library Management</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<style>
-/* Custom CSS for the login page */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-}
-.container {
-  max-width: 400px;
-  margin: 40px auto;
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-h1 {
-  margin-top: 0;
-  margin-bottom: 30px;
-  color: #007bff;
-  text-align: center;
-}
-.login-form {
-  margin-top: 30px;
-  background-color: #fcfcfc;
-  border: 1px solid #dcdcdc;
-  padding: 15px;
-}
-.login-form .form-group {
-  margin-bottom: 10px;
-}
-.login-form .form-control {
-  width: 100%;
-}
-.login-form .btn-primary {
-  width: 100%;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple E-Commerce Website</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="container">
-<h1 class="text-center">Login</h1>
-<div class="login-form">
-<form id="loginForm">
-<div class="form-group">
-<label for="username">Username</label>
-<input type="text" class="form-control" id="username" required>
-</div>
-<div class="form-group">
-<label for="password">Password</label>
-<input type="password" class="form-control" id="password" required>
-</div>
-<button type="submit" class="btn btn-primary btn-block">Login</button>
-</form>
-</div>
-</div>
-<script>
-// User login information
-const username = "admin";
-const password = "password";
-// Login form submit event
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-event.preventDefault();
-const enteredUsername = document.getElementById("username").value;
-const enteredPassword = document.getElementById("password").value;
-if (enteredUsername === username && enteredPassword === password) {
-// Authentication successful
-window.location.href = "Library.html"; // Redirect to the library management page
-} else {
-// Authentication failed
-document.getElementById("errorMessage").style.display = "block";
-document.getElementById("errorMessage").innerText = "Invalid username or password.";
-}
-});
-</script>
+    <header>
+        <h1>Simple E-Commerce Website</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="product">
+            <img src="product1.jpg" alt="Product 1">
+            <h2>Product 1</h2>
+            <p>Description of Product 1</p>
+            <button>Add to Cart</button>
+        </section>
+        <section class="product">
+            <img src="product2.jpg" alt="Product 2">
+            <h2>Product 2</h2>
+            <p>Description of Product 2</p>
+            <button>Add to Cart</button>
+        </section>
+        <!-- More products -->
+    </main>
+    <footer>
+        <p>&copy; 2024 Simple E-Commerce Website</p>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
